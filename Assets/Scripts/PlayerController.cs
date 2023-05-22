@@ -15,11 +15,15 @@ public class PlayerController : MonoBehaviour
     private float maxSpeed;
 
     private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer render;
     private Vector2 inputDir;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -35,13 +39,33 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.right * inputDir.x * moveForce, ForceMode2D.Force);
     }
 
+    private void Jump()
+    {
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
     private void OnMove(InputValue value)
     {
         inputDir = value.Get<Vector2>();
+        anim.SetFloat("MoveSpeed", Mathf.Abs(inputDir.x));
+        if (inputDir.x > 0)
+            render.flipX = false;
+        else if (inputDir.x < 0)
+            render.flipX = true;
     }
 
     private void OnJump(InputValue value)
     {
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        Jump();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        anim.SetBool("isGround", true);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        anim.SetBool("isGround", false);
     }
 }
