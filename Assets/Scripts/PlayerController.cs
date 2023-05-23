@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxSpeed;
 
+    [SerializeField] LayerMask groundLayer;
+
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer render;
     private Vector2 inputDir;
+    public bool isGround;
 
     private void Awake()
     {
@@ -29,6 +32,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+
+    // 물리적인 내용 -> FixedUpdate
+    private void FixedUpdate()
+    {
+        GroundCheck();
     }
 
     private void Move()
@@ -56,16 +65,27 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        Jump();
+        if(isGround)
+            Jump();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    // 지면 체크
+    private void GroundCheck()
     {
-        anim.SetBool("isGround", true);
-    }
+        // 2D 에서 Raycast 사용법 => 현재 내 position에서 아래 방향으로 0.9m
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayer);
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        anim.SetBool("isGround", false);
+        if (hit.collider != null) // 충돌
+        {
+            isGround = true;
+            anim.SetBool("isGround", true);
+            Debug.DrawRay(transform.position, new Vector3(hit.point.x, hit.point.y, 0) - transform.position, Color.red, 0.9f);
+        }
+        else
+        {
+            isGround = false;
+            anim.SetBool("isGround", false);
+            Debug.DrawRay(transform.position, Vector2.down * 0.9f, Color.green);
+        }
     }
 }
