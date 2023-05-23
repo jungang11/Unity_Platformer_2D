@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: spritesheet_enemies_33
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1597291980, guid: 5daaaa3527ee678438e560849439d82f, type: 3}
+  m_Sprite: {fileID: -2120195748, guid: 5daaaa3527ee678438e560849439d82f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
