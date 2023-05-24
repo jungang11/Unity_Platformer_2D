@@ -1967,7 +1967,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 83351fcfa78db81478502efa21703765, type: 3}
       - {fileID: 21300000, guid: e3c196d65219e204795443bafa6d8712, type: 3}
-      m_AnimationSpeed: 1.0625188
+      m_AnimationSpeed: 2.2250402
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -3410,7 +3410,7 @@ GameObject:
   - component: {fileID: 1527960698}
   - component: {fileID: 1527960697}
   - component: {fileID: 1527960700}
-  - component: {fileID: 1527960699}
+  - component: {fileID: 1527960701}
   m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
@@ -3485,25 +3485,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &1527960699
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527960696}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 90
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!61 &1527960700
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3514,7 +3495,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.003359437, y: 0.094365954}
@@ -3530,6 +3511,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.275476, y: 0.37340933}
   m_EdgeRadius: 0
+--- !u!249 &1527960701
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527960696}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGlobalAngle: 0
+  m_ForceAngle: 90
+  m_ForceMagnitude: 200
+  m_ForceVariation: 0
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0
 --- !u!1 &1715546591
 GameObject:
   m_ObjectHideFlags: 0
